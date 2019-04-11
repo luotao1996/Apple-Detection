@@ -67,12 +67,12 @@ The models are fine-tuned from ResNet pre-trained R50C4 models in
 Performance in [Apple-100 datasets](http://https://pan.baidu.com/) can
 be approximately reproduced.
    
-    |      Distance     |     Distance error(≈5%)  |  Mean square error(<1) | 
-    |        30         |        29.9              |     0.42146            |    
-    |        50         |        49.2              |     0.5892             |
-    |        70         |        71.1              |     0.532              |
-    |        90         |        94.3              |     0.73477            |
-    |        120        |        115.8             |     0.99904            |
+    |      Distance     |   Predict distance(error≈5%) |  Mean square error(<1) | 
+    |        30         |            29.9              |     0.42146            |    
+    |        50         |            49.2              |     0.5892             |
+    |        70         |            71.1              |     0.532              |
+    |        90         |            94.3              |     0.73477            |
+    |        120        |            115.8             |     0.99904            |
    
  
 ## Some examples
