@@ -1,10 +1,8 @@
-import numpy as np
 import time
 import cv2
 import argparse
 from tensorpack import *
 import tensorflow as tf
-from PIL import Image
 from inference import ResNetC4Model,detect_one_image
 from config import finalize_configs, config as cfg
 from viz import draw_fruits_box
@@ -21,13 +19,11 @@ class Fruits:
 def process_detector_func(models, image_bgr):
     # Perform detection
     results = detect_one_image(image_bgr, models)
+    # apple's id is 48,banana's id is 47
     fruits = [Fruits(r) for r in results if (r.class_id == 47 or r.class_id == 48)]
-    image_disp = draw_fruits_box(image_bgr, fruits)
 
     # Draw fruits results
-    image_pil = Image.fromarray(cv2.cvtColor(image_disp, cv2.COLOR_BGR2RGB))
-    image_disp = cv2.cvtColor(np.array(image_pil), cv2.COLOR_RGB2BGR)
-
+    image_disp = draw_fruits_box(image_bgr, fruits)
     return image_disp
 
 
@@ -67,7 +63,6 @@ if __name__ == "__main__":
     else:
         raise Exception("Either cam or video or image need to be specified as input")
 
-    # Initialize model
     width, height = cap.get(3), cap.get(4)
     assert width, "Read image or video faild,please re-check your path"
     print((width, height))
