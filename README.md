@@ -78,7 +78,7 @@ be approximately reproduced.
 ## Some examples
 
 Here are some visualization results of the apple detection model.<br/>
-![Image text](https://github.com/luotao1996/Apple_Detection/blob/master/examples/apple1.png)<br/>
-![Image text](https://github.com/luotao1996/Apple_Detection/blob/master/examples/apple2.png)<br/>
-![Image text](https://github.com/luotao1996/Apple_Detection/blob/master/examples/apple3.png)
+![Image text](https://github.com/luotao1996/Apple-Detection/blob/master/examples/apple1.png)<br/>
+![Image text](https://github.com/luotao1996/Apple-Detection/blob/master/examples/apple2.png)<br/>
+![Image text](https://github.com/luotao1996/Apple-Detection/blob/master/examples/apple3.png)
 
