@@ -3,6 +3,7 @@
 import cv2
 from object_detection.utils.visualization_utils import draw_bounding_box_on_image_array
 
+
 def draw_fruits_box(img_bgr, fruits):
     """
     Draw bounding box and distance of detected apple.
@@ -14,15 +15,27 @@ def draw_fruits_box(img_bgr, fruits):
         return img_bgr
 
     img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+    wight, height, _ = img_rgb.shape
     # img_pil = Image.fromarray(img_rgb)
 
+    # for fruit in fruits:
+    #     if fruit.box is not None:
+    #         xmin, ymin, xmax, ymax = fruit.box
+    #         draw_bounding_box_on_image_array(img_rgb, ymin, xmin, ymax, xmax, color='white', thickness=2,
+    #                                          display_str_list=[
+    #                                              ' Type: {} Distance:{:.2f}cm'.format(fruit.cls, fruit.distance)],
+    #                                          use_normalized_coordinates=False)
     for fruit in fruits:
         if fruit.box is not None:
             xmin, ymin, xmax, ymax = fruit.box
             draw_bounding_box_on_image_array(img_rgb, ymin, xmin, ymax, xmax, color='white', thickness=2,
                                              display_str_list=[
-                                                 ' Type: {} Distance:{:.2f}cm'.format(fruit.cls,fruit.distance)],
+                                                 ' Type:{}|XYZ=({:.2f},{:.2f},{:.2f})cm|Size:{:.2f}cm'.format(
+                                                     fruit.cls,
+                                                     fruit.distance,
+                                                     (xmin + xmax - wight) * 0.5 * (28 / 210),
+                                                     (height - (ymin + ymax)) * 0.5 * (28 / 210),
+                                                     fruit.size)],
                                              use_normalized_coordinates=False)
 
     return cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
-

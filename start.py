@@ -6,7 +6,7 @@ import tensorflow as tf
 from inference import ResNetC4Model,detect_one_image
 from config import finalize_configs, config as cfg
 from viz import draw_fruits_box
-from distance import get_distance
+from distance import get_distance, get_size
 
 class Fruits:
     def __init__(self, fruit):
@@ -15,6 +15,8 @@ class Fruits:
         self.cls = 'Apple' if fruit.class_id == 48 else 'Banana'
         distance = get_distance(fruit.box)
         self.distance = distance if fruit.class_id == 48 else distance * 1.25
+        self.size = get_size(fruit.box)
+
 # use models to detect
 def process_detector_func(models, image_bgr):
     # Perform detection

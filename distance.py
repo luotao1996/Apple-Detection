@@ -31,3 +31,12 @@ def get_distance(box):
     distance = cam_distance if cam_distance < 80 else (regression_distance + cam_distance) * 0.5
 
     return distance
+
+
+def get_size(box):
+    xmin, ymin, xmax, ymax = box
+    x = np.array([[374 + 328.45], [224 + 198], [154 + 141], [110 + 100], [84 + 77]])
+    y = np.array([28, 27, 26, 25, 24])
+    regressor = LinearRegression(normalize=True).fit(x, y)
+    regression_size = regressor.predict((xmax - xmin) + (ymax - ymin))[0]
+    return regression_size
